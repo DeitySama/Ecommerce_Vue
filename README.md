@@ -1,5 +1,6 @@
 # vue-frontend
-
+    Ecommerce Front end Project
+    
 ## Project setup
 ```
 npm install

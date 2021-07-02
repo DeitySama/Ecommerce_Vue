@@ -4,7 +4,7 @@
 <footer class="page-footer font-small unique-color-dark">
 
   <div>
-    <div class="px-5 bg-dark">
+    <div class="px-5 band">
 
       <div class="row py-4 d-flex align-items-center">
 
@@ -57,11 +57,9 @@
       <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Palala</h6>
+        <h6 class="font-weight-bold"> <router-link class="navbar-brand" to="/"><img src="https://res.cloudinary.com/palala/image/upload/v1619451649/workflow-mark-indigo-600_f6o867.svg " height="20px" class="mr-3">Palala</router-link></h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur
-          adipisicing elit.</p>
+        <p>The best way to find yourself is to lose yourself in the service of others.</p>
 
       </div>
       <!-- Grid column -->
@@ -70,19 +68,19 @@
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <h6 class="text-uppercase font-weight-bold">Services</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="#!">MDBootstrap</a>
+          <a href="#!">Delivery</a>
         </p>
         <p>
-          <a href="#!">MDWordPress</a>
+          <a href="#!">E-commerce</a>
         </p>
         <p>
-          <a href="#!">BrandFlow</a>
+          <a href="#!">Retail</a>
         </p>
         <p>
-          <a href="#!">Bootstrap Angular</a>
+          <a href="#!">Disbursements</a>
         </p>
 
       </div>
@@ -117,13 +115,13 @@
         <h6 class="text-uppercase font-weight-bold">Contact</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+          <i class="fa fa-home mr-3"></i> Accra, Ghana</p>
         <p>
-          <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+          <i class="fa fa-envelope mr-3"></i> palala@outlook.com</p>
         <p>
-          <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+          <i class="fa fa-phone mr-3"></i> +233 234 567 88</p>
         <p>
-          <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+          <i class="fa fa-print mr-3"></i> + 233 234 567 89</p>
 
       </div>
       <!-- Grid column -->
@@ -136,7 +134,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    <a href="/">Palala</a>
   </div>
   <!-- Copyright -->
 
@@ -151,6 +149,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .band{
+      background:rgba(79,70,229,1)
+    }
 </style>

@@ -4,7 +4,7 @@
         <router-link v-for="item in products" v-bind:key="item._id" :to="{name:'Preview',params:{id :item._id}}" class="col-md-2">
           <div class="item">
             <div class="image-container">
-              <img v-bind:src="item.image">
+              <img v-bind:src="item.image" >
             </div>
                 <p><small>{{item.category}}</small></p>
               <p>{{item.name}}</p>
@@ -46,6 +46,12 @@ export default {
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0px 20px 40px rgba(0,0,0,0.05);
+      transition:0.1s ease-in-out transform;
+      margin-bottom: 60px;
+    }
+    .item:hover{
+      transform: translateY(-10px);
+      box-shadow: 0px 50px 40px rgba(13, 1, 255, 0.07);
     }
     small{
       color: #7e7e7e;
@@ -69,7 +75,8 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow:hidden
+        overflow:hidden;
+        margin:0 auto
      }
     img{
       display: block;

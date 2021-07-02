@@ -30,11 +30,21 @@ export default {
 
 <style>
 *{
-   font-family: 'Roboto', sans-serif;                                               
+  font-family: 'Inter', sans-serif;                                               
 }
 body{
   overflow-x: hidden;
 }
-</style>
+
+a,  router-link{
+  color: black;
+  text-decoration: none !important;
+  transition: 0.2s;
+}
+  router-link:hover,a:hover{
+  color:rgba(79,70,229,1);
+}
+
+</style> 
 
 

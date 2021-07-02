@@ -5,52 +5,34 @@
             <div class="catCard">
                 <p>Category Title</p>
                 <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
+                <a>Explore Now  <i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
         </div>
         <div class="col-md-3">
             <div class="catCard">
                 <p>Category Title</p>
                 <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
+                <a>Explore Now <i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
         </div>
                 <div class="col-md-3">
             <div class="catCard">
                 <p>Category Title</p>
                 <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
+                <a>Explore Now <i class="fa fa-angle-right" aria-hidden="true"></i></a>
             </div>
         </div>
                 <div class="col-md-3">
             <div class="catCard">
                 <p>Category Title</p>
                 <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
+                <div class="expn">
+                    <a>Explore Now <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
+        
             </div>
         </div>
 
-                <div class="col-md-3">
-            <div class="catCard">
-                <p>Category Title</p>
-                <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
-            </div>
-        </div>
-                <div class="col-md-3">
-            <div class="catCard">
-                <p>Category Title</p>
-                <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
-            </div>
-        </div>
-                <div class="col-md-3">
-            <div class="catCard">
-                <p>Category Title</p>
-                <img src="https://via.placeholder.com/150x150" class="d-block w-100">
-                <a>Explore Now</a>
-            </div>
-        </div>
     </div>
   </section>
 </template>
@@ -82,5 +64,12 @@ export default {
 
     .catCard p{
         font-weight: bold;
+    }
+    .expn{
+        width: 100%;
+    }
+    .expn a{
+        display: inline-block;
+       margin-left: auto; 
     }
 </style>

@@ -1,13 +1,12 @@
 <template>
   <div class="login">
-      <form @submit.prevent="login">
+      <form @submit.prevent="onSubmit">
           <div>
               <h3 class="text-center mb-5">Login into Palala</h3>
           </div>
             <div class="form-group">
                 <label>Email address</label>
                 <input type="email" class="form-control" aria-describedby="emailHelp" v-model="email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
                 <label>Password</label>
@@ -18,12 +17,17 @@
                 <label class="form-check-label" for="exampleCheck1">Keep Me SignedIn</label>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <router-link  to="/register" class="btn  btn-block btn-sec">Create an Account</router-link>
+            <div class="mt-3">
+                <p><small>Forgot Password?<a> Reset</a></small></p>
+            </div>
         </form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { mapActions } from 'vuex'
+
 export default {
     data(){
         return{
@@ -32,15 +36,14 @@ export default {
         }
     },
     methods:{
-        login:function(){
-            //do validation
-            axios.post('https://palala.herokuapp.com/api/v1/users/login',{email:this.email,password:this.password}).then(res=>{
-                if(res.data.success == true){
-                     
-                }
-            })
+        ...mapActions(['authenticate','getCurrent']),
+        onSubmit(e){
+            e.preventDefault();
+            this.authenticate({email:this.email,password:this.password});
+            this.getCurrent();
         }
-    }
+        
+    },
 }
 </script>
 
@@ -57,5 +60,19 @@ export default {
 form{
     width: 40%;
 }
+
+button{
+        background: rgba(79,70,229,1);
+    }
+.btn-sec{
+    background-color: white;
+    color: rgba(79,70,229,1);
+    border: solid 2px rgba(79,70,229,1);
+}
+p a{
+    color: rgba(79,70,229,1) !important;
+    cursor: pointer;
+}
+
 
 </style>

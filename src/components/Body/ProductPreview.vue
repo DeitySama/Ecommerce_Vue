@@ -1,13 +1,14 @@
 <template>
     <div class="preview">
+        <div class="back"><a><i class="fa fa-angle-left" aria-hidden="true"></i> Back</a></div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="img-con">
                     <img v-bind:src="product.image" class="product-image">
                 </div>
                 <div class="p-imgs">
                     <div class="row">
-                        <li v-for="img of product.productImages" v-bind:key="img" class=" col">
+                        <li v-for="img of product.productImages" v-bind:key="img" class=" col-md-3">
                             <div class="p-img">
                                 <img v-bind:src="img" alt="p-img">
                             </div>
@@ -15,12 +16,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-1"></div>
             <div class="col-md-6">
                 <div class="details">
                     <div class="details-h">
                         <p><small>{{product.category}}</small></p>
-                        <h1>{{product.name}}</h1>
-                        <p>GHs {{product.price}}.00</p>
+                        <h2>{{product.name}}</h2>
+                        <p class="price">GHs {{product.price}}.00</p>
                     </div>
                     <hr>
                     <div class="details-b">
@@ -31,14 +33,14 @@
                                 <p><small>Country Of Origin</small></p>
                                 <p>{{product.countryOfOrigin}}</p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <p><small>Tags</small></p>
                                 <p>
-                                    <i v-for="tag in product.tags" v-bind:key="tag">{{tag}}</i>
+                                    <span classs="tag" v-for="tag in product.tags" v-bind:key="tag">{{tag}}</span>
                                 </p>
                             </div>
                             <div class="col-md-3"></div>
-                            <div class="col-md-2"></div>
+
                         </div>
 
                     </div>
@@ -52,7 +54,7 @@
                     </div>
                     <div class="col-md-4">
                         <p><small class="text-white">Add To cart</small></p>
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-primary" @click="addTo">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -75,7 +77,7 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="specs" role="tabpanel" aria-labelledby="specs-tab">
-                    {{product.specifications}}
+                   <div class="spec" v-for="(spec,i) in product.specifications" v-bind:key="i">{{spec}}</div>
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...</div>
                 <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">...</div>
@@ -85,7 +87,8 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
+    import {mapActions} from 'vuex'
     export default {
         name: 'Preview',
         data() {
@@ -93,7 +96,8 @@
                 id: this.$route.params.id,
                 product: {},
                 quantity: 1,
-                price: 0
+                price: 0,
+                currentImg:''
             }
         },
         methods: {
@@ -104,10 +108,15 @@
                 if (this.quantity > 1) {
                     this.quantity -= 1;
                 }
+            },
+            ...mapActions(['addToCart']),
+            addTo:function(){
+
+                this.addToCart({product:this.product,quantity:this.quantity});
             }
         },
         created() {
-            this.product = this.$route.params.id;
+            this.id = this.$route.params.id;
             axios.get(`https://palala.herokuapp.com/api/v1/products/${this.id}`, {
                 headers: {}
             }).then(res => {
@@ -121,7 +130,7 @@
 <style scoped>
     .preview {
         margin-top: 60px;
-        padding: 40px;
+        padding:40px 60px;
     }
 
     .image-con {
@@ -130,23 +139,17 @@
     }
 
     .product-image {
-        width: 50%;
+        width: 100%;
         display: block;
         margin: 0 auto;
     }
 
     small {
-        color: #9e9e9e;
+        color: #bdbdbd;
     }
 
     p {
-        font-size: 20px;
-    }
-
-    i {
-        font-style: normal;
-        margin-left: 10px;
-        text-transform: uppercase;
+        font-size: 16px;
     }
 
     .quantity button {
@@ -177,10 +180,37 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 30px 20px;
+
     }
 
     .p-imgs img {
-        width: 70%;
+        width: 100%;
+    }
+
+    .price{
+        font-size: 20px;
+        font-weight: 400;
+        color: rgba(79,70,229,1);
+    }
+    button{
+        background: rgba(79,70,229,1);
+    }
+    .spec{
+        margin-top:40px;
+        font-weight: normal;
+    }
+    span{
+        display: inline-block;
+        background: #eee  !important;
+        padding: 5px 15px;
+        margin: 0 5px ;
+        margin-bottom: 10px !important;
+        border-radius: 50px;
+    }
+    .back{
+        margin-left: 30px;
+        margin-bottom: 40px;
+        color:rgba(79,70,229,1);
+        cursor: pointer;
     }
 </style>

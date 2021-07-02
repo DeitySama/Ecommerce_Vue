@@ -1,63 +1,52 @@
 <template>
   <section>
-      <div class="searchBar">
+
+
+
+     <div class="searchBar">
         <searchbar></searchbar>
-      </div>
+     </div>
+
+    <div>
+      <filters></filters>
+    </div>
+
       <div class="products">
-          <products v-bind:products="products"></products>
+          <products v-bind:products="allProducts"></products>
       </div>
       <div>
-          <pagination v-bind:next="next" v-bind:previous="previous" v-on:nextPage="nextP($event)" v-on:prevPage="nextP($event)"></pagination>
+          <pagination></pagination>
       </div>
+
+
+
   </section>
 </template>
 
 <script>
 import Searchbar from './Header/Searchbar';
 import Products from './Body/Products';
-import Pagination from './Body/Pagination'
-import axios from 'axios'
+import Pagination from './Body/Pagination';
+import Filter from './Body/Filter'
+import { mapActions, mapGetters } from 'vuex';
+
 
 
 export default {
-    data(){
-        return {
-            products:[],
-            next:0,
-            previous:0
-        }
-    },
     components:{
         'searchbar':Searchbar,
         'products' :Products,
-        'pagination':Pagination
+        'pagination':Pagination,
+        'filters': Filter
+
      },
      methods:{
-         nextP:function(nextpn){
-         axios.get(`https://palala.herokuapp.com/api/v1/products?page=${nextpn}`).then(res=>{
-         this.products = res.data.item;
-        //  this.next = res.data.pagination.next.page;
-         if(!res.data.pagination.previous){
-             this.previous = 0;
-         }
-         else{
-             this.previous = res.data.pagination.previous.page;
-         }
-      });
-         }
+       ...mapActions(["fetchProducts"])
      },
+     computed:mapGetters(["allProducts","previousPage","nextPage"]),
+
   created(){
-      axios.get(`https://palala.herokuapp.com/api/v1/products?page=${this.page}`).then(res=>{
-         this.products = res.data.item;
-         this.next = res.data.pagination.next.page;
-         if(!res.data.pagination.previous){
-             this.previous = 0;
-         }
-         else{
-             this.previous = res.data.pagination.previous.page;
-         }
-         console.log(res.data);
-      });
+     this.fetchProducts();
   }
 }
 </script>
@@ -68,9 +57,10 @@ section{
 }
 
 .searchBar{
-        padding: 40px;
+     padding: 40px;
 }
 .products{
     margin:  20px 0px;
 }
+
 </style>

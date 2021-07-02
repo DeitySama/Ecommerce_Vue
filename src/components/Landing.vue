@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style>
-*{
-   font-family: 'Product Sans', sans-serif;                                                
-}
 body{
   overflow-x: hidden;
 }

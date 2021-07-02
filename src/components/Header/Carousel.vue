@@ -43,6 +43,6 @@
 
 <style scoped>
     .cc {
-        margin-top: 80px;
+        margin-top: 60px;
     }
 </style>

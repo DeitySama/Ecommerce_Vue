@@ -31,4 +31,5 @@ export default {
   transform: translate(-50%,-50%);
   width: 80%;
   }
+
 </style>
